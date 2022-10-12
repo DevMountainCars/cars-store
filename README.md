@@ -1,2 +1,9 @@
 # cars-store
-MinTic - MisionTic - Ciclo 4
+
+Equipo DevMountain 
+
+Tienda virtual para venta de autopartes.
+
+By:
+- Marcela Aristizabal
+- Alexander Diaz Garcia
