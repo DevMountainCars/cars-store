@@ -7,7 +7,7 @@ const fetch = (url) => import('node-fetch').then(({ default: fetch }) => fetch(u
 //Ver la lista de productos
 exports.getProducts = catchAsyncErrors(async (req, res, next) => {
 
-    const resPerPage = 3;
+    const resPerPage = 4;
     const productsCount = await producto.countDocuments();
 
     const apiFeatures = new APIFeatures(producto.find(), req.query)
@@ -27,17 +27,6 @@ exports.getProducts = catchAsyncErrors(async (req, res, next) => {
         products
     })
 
-
-    const productos = await producto.find();
-    if (!productos) {
-        return next(new ErrorHandler("Informacion no encontrada", 404))
-    }
-
-    res.status(200).json({
-        success: true,
-        cantidad: productos.length,
-        productos
-    })
 })
 
 //Ver un producto por ID
@@ -155,16 +144,16 @@ exports.getProductReviews = catchAsyncErrors(async (req, res, next) => {
 exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
     const product = await producto.findById(req.query.idProducto);
 
-    const opiniones = product.opiniones.filter(opinion =>
+    const opi = product.opiniones.filter(opinion =>
         opinion._id.toString() !== req.query.idReview.toString());
 
-    const numCalificaciones = opiniones.length;
+    const numCalificaciones = opi.length;
 
-    const calificacion = product.opiniones.reduce((acc, Opinion) =>
-        Opinion.rating + acc, 0) / opiniones.length;
+    const calificacion = opi.reduce((acc, Opinion) =>
+        Opinion.rating + acc, 0) / opi.length;
 
     await producto.findByIdAndUpdate(req.query.idProducto, {
-        opiniones,
+        opi,
         calificacion,
         numCalificaciones
     }, {
@@ -198,4 +187,4 @@ function verProductoPorID(id) {
         .catch(err => console.error(err))
 }
 
-//verProductoPorID('63473f3c2f1bb82152801edc'); Probamos el metodo con un id
+//verProductoPorID('63456a8d9163cb9dbbcaa235'); Probamos el metodo con un id

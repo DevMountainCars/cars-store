@@ -31,7 +31,7 @@ const NewProduct = () => {
                                 </div>
 
                                 <div className="form-group">
-                                    <label htmlFor="price_field">Price</label>
+                                    <label htmlFor="price_field">Precio</label>
                                     <input
                                         type="text"
                                         id="price_field"
