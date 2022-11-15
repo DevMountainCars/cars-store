@@ -1,0 +1,36 @@
+{
+    "item": [
+        {
+            "_id": "63473f3c2f1bb82152801edc",
+            "producto": "llantas",
+            "precio": 700000,
+            "imagen": "./images/productos/llantas.png",
+            "inventario": 50,
+            "__v": 0
+        },
+        {
+            "_id": "63473fb22f1bb82152801ede",
+            "nombre": "Vidrios Polarizados",
+            "precio": 120000,
+            "imagen": "./images/productos/vidrios_polarizados.png",
+            "inventario": 20,
+            "__v": 0
+        },
+        {
+            "_id": "634749f31736e433bde71a24",
+            "nombre": "Rines",
+            "precio": 700000,
+            "imagen":  "./images/productos/rines.png",
+            "inventario": 12,
+            "__v": 0
+        },
+        {
+            "_id": "63474a631736e433bde71a27",
+            "nombre": "Cojinería",
+            "precio": 200000,
+            "imagen":"./images/productos/cojineria.png",
+            "inventario": 1,
+            "__v": 0
+        }
+    ]
+}
