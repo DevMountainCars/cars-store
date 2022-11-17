@@ -41,7 +41,7 @@ export const Shipping = () => {
             <CheckoutSteps shipping />
             <div className="row wrapper">
                 <div className="col-10 col-lg-5">
-                    <form className="shadow-lg" onClick={submitHandler}>
+                    <form className="shadow-lg" onSubmit={submitHandler}>
                         <h1 className="mb-4">Información de envio</h1>
                         <div className="form-group">
                             <label htmlFor="address_field">Dirección</label>
@@ -56,7 +56,7 @@ export const Shipping = () => {
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="phone_field">Telefono</label>
+                            <label htmlFor="phone_field">Teléfono</label>
                             <input
                                 type="phone"
                                 id="phone_field"
