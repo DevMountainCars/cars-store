@@ -24,6 +24,7 @@ const NewProduct = () => {
         "Llantas",
         "Vidrios Polarizados",
         "Accesorios",
+        "Cojinería",
         "Rines"
     ]
 
