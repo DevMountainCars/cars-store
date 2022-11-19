@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import { getProductDetails, clearErrors} from '../../actions/productActions'
 import { useAlert} from 'react-alert'
 import { Carousel } from 'react-bootstrap'
+import { addItemToCart } from '../../actions/cartActions'
 
 
 export const ProductDetails = () => {
@@ -41,9 +42,14 @@ export const ProductDetails = () => {
     setQuantity(qty)
  }
 
+ const addToCart = () => {
+  dispatch(addItemToCart(id, quantity));
+  alert.success('Producto agregado al carro')
+}
+
   return (
    <Fragment>
-    {loading ? <i className="fa fa-refresh fa-spin fa-3x fa-fw"></i> :(
+    {loading ? <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i> :(
       <Fragment>
       <MetaData title={product.nombre}></MetaData>
       <div className='row d-flex justify-content-around'>
@@ -51,7 +57,7 @@ export const ProductDetails = () => {
               <Carousel pause='hover'>
                 {product.imagen && product.imagen.map(img =>(
                   <Carousel.Item key={img.public_id}>
-                    <img className="d-block w-100" src={"../"+img.url} alt={product.nombre}></img>
+                    <img className="d-block w-100" src={img.url} alt={product.nombre}></img>
                   </Carousel.Item>
                 ))}
               </Carousel>
@@ -73,7 +79,7 @@ export const ProductDetails = () => {
                 <input type="number" className="form-control count d-inline" value={quantity} readOnly/>
                 <span className="btn btn-primary plus" onClick={increaseQty}>+</span>
               </div>
-              <button type="button" id="carrito_btn" className="btn btn-primary d-inline ml-4" disabled={product.inventario===0}>Agregar al Carrito</button>
+              <button type="button" id="cart_btn" className="btn btn-primary d-inline ml-4" disabled={product.inventario === 0} onClick={addToCart}>Agregar al Carrito</button>
               <hr />
               <p>Estado: <span id="stock_stado" className={product.inventario>0 ? 'greenColor':'redColor'}>{product.inventario>0 ? "En existencia": "Agotado"}</span></p>
               <hr />
@@ -127,3 +133,4 @@ export const ProductDetails = () => {
     
   )
 }
+
